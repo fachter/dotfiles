@@ -177,4 +177,4 @@ create-venv() {
     pip install --upgrade pip
 }
 
-alias update_submodule = 'git submodule update --remote --merge && git add . && git commit -m "Update submodules to latest version" && git push'
+alias update_submodule='git submodule update --remote --merge && git add . && git commit -m "Update submodules to latest version" && git push'

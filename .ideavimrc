@@ -1,0 +1,158 @@
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set relativenumber
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set exchange
+set NERDTree
+" Trying the new syntax
+Plug 'machakann/vim-highlightedyank'
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" <C-n> seems to me as a better solution than <M-n>,
+" but we should finally support vim-visual-multi because vim-multiple-cursors is deprecated now
+" map <C-n> <Plug>NextWholeOccurrence
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set incsearch
+set nu
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+
+""" Idea Movements -----------------------------
+map <leader>at <Action>(ActivateTerminalToolWindow)
+map <leader>ar <Action>(ActivateRunToolWindow)
+map <leader>ad <Action>(ActivateDebugToolWindow)
+map <leader>as <Action>(ActivateStructureToolWindow)
+map <leader>ac <Action>(ActivateDatabaseToolWindow)
+
+map <leader>full <Action>(ToggleFullScreen)
+
+""" Run Config ---------------------------------
+map <leader>rn <Action>(Run)
+map <leader>rd <Action>(Debug)
+map <leader>rcn <Action>(RunClass)
+map <leader>rcd <Action>(DebugClass)
+map <leader>ro <Action>(RunConfiguration)
+map <leader>rs <Action>(Stop)
+
+""" Debug Actions -------------------------------
+map <leader>dn <Action>(StepOver)
+map <leader>do <Action>(StepOut)
+map <leader>di <Action>(StepInto)
+map <leader>dr <Action>(Resume)
+map <leader>de <Action>(XDebugger.Evaluate.Code.Fragment.Editor.Popup)
+map <leader>dq <Action>(XDebugger.Evaluation.Dialog.Tree.Popup)
+
+""" Useful Commands
+map <leader>cm <Action>(CommentByLineComment)
+map <leader>js <Action>(EditorCodeBlockStart)
+map <leader>je <Action>(EditorCodeBlockEnd)
+"""map <leader>ps [[
+"""map <leader>pe ]]
+
+""" Multicursor
+map <leader>sn <Action>(SelectNextOccurrence)
+map <leader>su <Action>(UnselectPreviousOccurrence)
+map <leader>ss <Action>(FindNext)
+map <leader>sp <Action>(FindPrevious)
+map <leader>sa <Action>(SelectAllOccurrences)
+
+
+""" Jump to Camel or Snake Case Words
+map <C-l> <Action>(EditorNextWord)
+map <C-h> <Action>(EditorPreviousWord)
+vmap <C-l> <Action>(EditorNextWordWithSelection)
+vmap <C-h> <Action>(EditorPreviousWordWithSelection)
+
+""" Move Lines up / down
+map <C-k> <Action>(MoveLineUp)
+imap <C-k> <Action>(MoveLineUp)
+map <C-j> <Action>(MoveLineDown)
+imap <C-j> <Action>(MoveLineDown)
+map <C-D-j> <Action>(MoveStatementDown)
+map <C-D-k> <Action>(MoveStatementUp)
+imap <C-D-j> <Action>(MoveStatementDown)
+imap <C-D-k> <Action>(MoveStatementUp)
+
+""" Insert Lines without leaving normal mode
+map <leader>o o<Esc>
+map <leader>O O<Esc>
+map <leader>na a<CR><Esc>
+map <leader>ni i<CR><Esc>
+
+""" Copy to clipboard
+map <leader>y "+y
+map <leader>Y "+Y
+
+""" Open File Controls / Tab Control
+map <leader>t1 <Action>(GoToTab1)
+map <leader>t2 <Action>(GoToTab2)
+map <leader>t3 <Action>(GoToTab3)
+map <leader>t4 <Action>(GoToTab4)
+map <leader>t5 <Action>(GoToTab5)
+map <leader>t6 <Action>(GoToTab6)
+map <leader>t7 <Action>(GoToTab7)
+map <leader>t8 <Action>(GoToTab8)
+map <leader>t9 <Action>(GoToTab9)
+
+map <leader>th <Action>(PreviousTab)
+map <leader>tl <Action>(NextTab)
+map <leader>tca <Action>(CloseAllEditors)
+map <leader>tcl <Action>(CloseAllToTheLeft)
+map <leader>tcr <Action>(CloseAllToTheRight)
+map <leader>tco <Action>(CloseAllEditorsButActive)
+map <leader>tmo <Action>(MoveEditorToOppositeTabGroup)
+
+map <leader>cc <Action>(CollapseRegion)
+map <leader>ce <Action>(ExpandRegion)
+
+map go <Action>(FileChooser.LightEditGotoOpenedFile)
+""" map <leader>gd gd :vs<CR><C-h>:hide<CR> <C-w>l
+""" map <leader>mvr <Action>(SplitVertically)
+map <leader>en <Action>(GotoNextError)
+map <leader>ep <Action>(GotoPreviousError)
+
+map <leader>fee <Plug>(easymotion-s)
+map <leader>eee <Plug>(easymotion-f)
+
+map <leader>re <Action>(RenameElement)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+""" map <leader>s <Action>(SelectInProjectView)
+map <leader>gb <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+
+
+" Reformat the current line only
+map <leader>l V<Action>(ReformatCode)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+""" map <leader>o <Action>(FileStructurePopup)
+
+map <leader>J Ji <ESC>
+
+" Just makes me nervous
+" map H h
+
+" Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
+" map <leader>i ~hi
+" Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
+vmap <leader>u d~h
+
+" paste without losing the buffer
+xnoremap <leader>p \"_dP
+
+map <leader>gr <Action>(Vcs.RevertSelectedChanges)

@@ -127,6 +127,8 @@ export PATH="$PYENV_ROOT/shims:${PATH}"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+alias setup_venv_for_nvim="pip install --upgrade pip && pip install isort debugpy pynvim"
+
 # Zoxide
 
 eval "$(zoxide init zsh)"

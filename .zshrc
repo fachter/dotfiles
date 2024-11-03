@@ -6,6 +6,8 @@
 # Vim Motions in Shell
 set -o vi
 
+alias vim=nvim
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
